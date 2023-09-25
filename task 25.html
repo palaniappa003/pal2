@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .card {
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            
+        }
+
+        .card {
+            margin-top: 10px;
+            box-sizing: border-box;
+            border-radius: 2px;
+            background-clip: padding-box;
+            min-height: 400px;
+        }
+
+        .card span.card-title {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+            text-transform: uppercase;
+        }
+
+        .card .card-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card .card-image img {
+            border-radius: 2px 2px 0 0;
+            background-clip: padding-box;
+            position: relative;
+            z-index: -1;
+        }
+
+        .card .card-image span.card-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 16px;
+        }
+
+        .card .card-content {
+            padding: 16px;
+            border-radius: 0 0 2px 2px;
+            background-clip: padding-box;
+            box-sizing: border-box;
+        }
+
+        .card .card-content p {
+            margin: 0;
+            color: inherit;
+        }
+
+        .card .card-content span.card-title {
+            line-height: 48px;
+        }
+
+        .card .card-action {
+            border-top: 1px solid rgba(160, 160, 160, 0.2);
+            padding: 16px;
+        }
+
+        .card .card-action a {
+            color: #ffab40;
+            margin-right: 16px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .card .card-action a:hover {
+            color: #ffd8a6;
+            text-decoration: none;
+        }
+
+        /* Custom styles for the form */
+        .custom-form {
+            margin-top: 20px;
+        }
+
+        .custom-form .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .custom-form .form-control-feedback {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .custom-form .btn-send {
+            background-color: yellow;
+            color: black;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .custom-form .btn-send .icon {
+            margin-right: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="card">
+                    <div class="card-content">
+                        <form id="contact-form" method="post" role="form" class="custom-form">
+                            <div class="form-group">
+                                <label for="form_name"><i class="fas fa-user"></i> Firstname *</label>
+                                <input id="form_name" type="text" name="name" class="form-control"
+                                    placeholder="Please enter your firstname *">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_lastname"><i class="fas fa-user"></i> Lastname *</label>
+                                <input id="form_lastname" type="text" name="surname" class="form-control"
+                                    placeholder="Please enter your lastname *">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_email"><i class="fas fa-envelope"></i> Email *</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                     <span class="glyphicon glyphicon-envelope"></span> 
+                                    </div>
+                                <input id="form_email" type="email" name="email" class="form-control"
+                                    placeholder="Please enter your email *">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_phone"><i class="fas fa-phone"></i> Phone</label>
+                                <input id="form_phone" type="tel" name="phone" class="form-control"
+                                    placeholder="Please enter your phone number">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_address"><i class="fas fa-map-marker-alt"></i> Address</label>
+                                <input id="form_address" type="text" name="address" class="form-control"
+                                    placeholder="Please enter your address">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_city"><i class="fas fa-city"></i> City</label>
+                                <input id="form_city" type="text" name="city" class="form-control"
+                                    placeholder="Please enter your city">
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-question"></i> Do you have hosting?</label>
+                                <div>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="hosting" value="Yes"> Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="hosting" value="No"> No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="form_message"><i class="fas fa-comment"></i> Message *</label>
+                                <textarea id="form_message" name="message" class="form-control"
+                                    placeholder="Message for me *" rows="4"></textarea>
+                                <span class="form-control-feedback"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-send" onclick="validateForm()"><i
+                                        class="fas fa-paper-plane icon"></i> Send 🛫</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function validateForm() {
+            var formValid = true; // Assume the form is valid initially
+
+            // Get all form elements with the class "form-control"
+            var formElements = document.querySelectorAll(".form-control");
+
+            // Loop through each form element and validate
+            formElements.forEach(function (field) {
+                if (field.value.trim() === "") {
+                    // Field is empty, apply styling
+                    field.nextElementSibling.innerText = "This field is required"; // Display error message
+                    field.nextElementSibling.style.color = "red"; // Set color to red
+                    field.style.borderColor = "red"; // Set border color to red
+                    field.style.fontWeight = "bold"; // Make text bold
+                    var label = field.parentElement.querySelector("label");
+                    label.style.color = "red"; // Set field name (label) color to red
+                    formValid = false; // Set formValid to false
+                } else {
+                    // Field is not empty, reset styling
+                    field.nextElementSibling.innerText = ""; // Clear error message
+                    field.style.borderColor = ""; // Clear border color
+                    field.style.fontWeight = ""; // Clear font weight
+                    var label = field.parentElement.querySelector("label");
+                    label.style.color = ""; // Clear field name (label) color
+                }
+            });
+
+            if (formValid) {
+                // The form is valid; you can submit it here
+                alert("Form is valid. Submitting...");
+            } else {
+                // The form is invalid; you can show an error message here
+                alert("Form contains errors. Please fix them.");
+            }
+        }
+    </script>
+</body>
+
+</html>

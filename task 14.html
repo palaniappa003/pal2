@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alphabetical Order</title>
+</head>
+<body>
+  <h1>Alphabetical Order</h1>
+  <input type="text" id="inputString" placeholder="Enter a string">
+  <button onclick="sortString()">Sort</button>
+  <p>Sorted String: <span id="sortedString"></span></p>
+
+  <script>
+    function sortString() {
+      const inputString = document.getElementById("inputString").value;
+      const sortedString = inputString.split("").sort().join("");
+      document.getElementById("sortedString").textContent = sortedString;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethus layout</title>
+  <!-- Bootstrap CDN links -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body, ul {
+margin: 0;
+padding: 0;
+}
+.hor ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #c7c7c7;
+      }
+      
+      .hor li {
+        float: left;
+      }
+      
+      .hor li a {
+        display: block;
+        color: rgb(30, 5, 130);
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      .hor li a:hover {
+        background-color: #323232;
+        color:white;
+      }
+
+      .active {
+        background-color: #c7c7c7;
+      }
+
+      
+      </style>
+</head>
+<body>
+  <!-- Container element -->
+  <div class="container">
+    <!-- Header element -->
+    <div class="header">
+      <h1 class="text-center" style="color: white; background-color: blue;">Ethnus layout</h1>
+    </div></div>
+    <div class="hor">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#java">Menu</a></li>
+            <li><a href="#HTML">About</a></li>
+            <li><a href="#CSS">Contact</a></li>
+          </ul></div><br><div class="container-fluid">
+            <div class="row">
+                <!-- Left Side (80% of the webpage) -->
+                <div class="col-md-9" >
+                    <div class="p-4">
+                        <h1>Left Side</h1>
+                        <p>This is the left side of the webpage. It contains text.</p>
+                    </div>
+                </div>
+                <!-- Right Side (20% of the webpage) -->
+                <div class="col-md-3 right-side">
+                    <div class="p-4" style="background-color: #c7c7c7;" >
+                        <h1>Right Side</h1>
+                        <p>This is the right side of the webpage. It contains text.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Bootstrap JS and Popper.js (for Bootstrap's JavaScript plugins) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body></html>

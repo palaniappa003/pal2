@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        td {
+            padding: 4px;
+            width: 10%;
+            height: 5px;
+        }
+        form{
+            width :600px;
+            
+            background-image: linear-gradient(rgb(212, 202, 106), rgb(245, 160, 231));
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+            font-style: bold;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1 style="color: blue;">Registration Form</h1>
+        <form id="registrationForm" novalidate>
+            <table>
+                <tr>
+                    <td><label for="fname">First name:</label></td>
+                    <td><input type="text" id="fname" name="fname" required><br>
+                    <span class="error-message" id="fnameError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="lname">Last name:</label></td>
+                    <td><input type="text" id="lname" name="lname" required><br>
+                    <span class="error-message" id="lnameError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required><br>
+                    <span class="error-message" id="emailError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required><br>
+                    <span class="error-message" id="passwordError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="repassword">Re-enter password:</label></td>
+                    <td><input type="password" id="repassword" name="repassword" required><br>
+                    <span class="error-message" id="repasswordError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select><br>
+                        <span class="error-message" id="genderError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="age">Age:</label></td>
+                    <td><input type="number" id="age" name="age" required><br>
+                    <span class="error-message" id="ageError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="num">Phone Number:</label></td>
+                    <td><input type="tel" id="num" name="num" required><br>
+                    <span class="error-message" id="numError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" required></textarea><br>
+                    <span class="error-message" id="addressError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="state">State:</label></td>
+                    <td><input type="text" id="state" name="state" required><br>
+                    <span class="error-message" id="stateError"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="country">Country:</label></td>
+                    <td>
+                        <select id="country" name="country" required>
+                            <option value="Choose Your Country" selected>Choose Your Country</option>
+                            <option value="India">India</option>
+                        </select><br>
+                        <span class="error-message" id="countryError"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="languages">Languages Known:</label></td>
+                    <td>
+                        <input type="checkbox" id="language1" name="languages" value="Language 1">
+                        <label for="language1">English</label>
+                        <input type="checkbox" id="language2" name="languages" value="Language 2">
+                        <label for="language2">Kannada</label>
+                        <input type="checkbox" id="language3" name="languages" value="Language 3">
+                        <label for="language3">Tamil</label>
+                        <input type="checkbox" id="language4" name="languages" value="Language 4">
+                        <label for="language4">Telugu</label><br>
+                        <span class="error-message" id="languagesError"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <input type="checkbox" id="agree" name="agree" value="agree" required>
+            <label for="agree">Hereby I declare all details given are true</label><br>
+
+            <div style="text-align: right;">
+                <label>Log in to <a href="https://ethnus.com/" target="_blank">Ethnus</a> website</label>
+            </div>
+            <div style="color:red;">
+            <input type="submit" value="Register">
+            </div>
+        </form>
+    </center>
+
+    <script>
+        // Function to validate the form
+        function validateForm(event) {
+            const fname = document.getElementById("fname").value.trim();
+            const lname = document.getElementById("lname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+            const repassword = document.getElementById("repassword").value.trim();
+            const gender = document.getElementById("gender").value;
+            const age = document.getElementById("age").value.trim();
+            const num = document.getElementById("num").value.trim();
+            const address = document.getElementById("address").value.trim();
+            const state = document.getElementById("state").value.trim();
+            const country = document.getElementById("country").value;
+            const languages = document.querySelectorAll("input[name='languages']:checked").length;
+            const agree = document.getElementById("agree").checked;
+
+            // Reset error messages
+            document.querySelectorAll(".error-message").forEach(function (errorElement) {
+                errorElement.textContent = "";
+            });
+
+            let isValid = true;
+
+            if (fname === "") {
+                document.getElementById("fnameError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (lname === "") {
+                document.getElementById("lnameError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (email === "") {
+                document.getElementById("emailError").textContent = "Poor";
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                document.getElementById("emailError").textContent = "Invalid";
+                isValid = false;
+            }
+
+            if (password === "") {
+                document.getElementById("passwordError").textContent = "Poor";
+                isValid = false;
+            } else if (password.length < 6) {
+                document.getElementById("passwordError").textContent = "Poor OR Mismatch";
+                isValid = false;
+            }
+
+            if (repassword === "") {
+                document.getElementById("repasswordError").textContent = "Poor";
+                isValid = false;
+            } else if (repassword !== password) {
+                document.getElementById("repasswordError").textContent = "Poor OR Mismatch";
+                isValid = false;
+            }
+
+            if (gender === "") {
+                document.getElementById("genderError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (age === "") {
+                document.getElementById("ageError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (num === "") {
+                document.getElementById("numError").textContent = "Poor";
+                isValid = false;
+            } else if (!isValidPhoneNumber(num)) {
+                document.getElementById("numError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (address === "") {
+                document.getElementById("addressError").textContent = "Poor";
+                isValid = false;
+            }
+
+            if (state === "") {
+                document.getElementById("stateError").textContent = "Poor";
+                isValid = false;
+            }
+
+
+            if (!isValid) {
+                event.preventDefault(); // Prevent form submission
+            }
+        }
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            // Basic email format validation (you can use a more comprehensive regex)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Function to validate phone number format
+        function isValidPhoneNumber(num) {
+            // Basic phone number format validation (you can use a more comprehensive regex)
+            const phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(num);
+        }
+
+        // Attach the form validation function to the form's submit event
+        const form = document.getElementById("registrationForm");
+        form.addEventListener("submit", validateForm);
+    </script>
+</body>
+</html>

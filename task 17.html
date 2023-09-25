@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <style>
+        .required {
+            border: 2px solid red;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <form id="contactForm" onsubmit="return validateForm()">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <span class="error-message" id="nameError"></span>
+        </div><br>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span class="error-message" id="emailError"></span>
+        </div><br>
+        <div>
+            <label for="website">Website:</label>
+            <input type="url" id="website" name="website">
+            <span class="error-message" id="websiteError"></span>
+        </div><br>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            <span class="error-message" id="messageError"></span>
+        </div><br>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const websiteInput = document.getElementById("website");
+            const messageInput = document.getElementById("message");
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const websiteError = document.getElementById("websiteError");
+            const messageError = document.getElementById("messageError");
+
+            let valid = true;
+
+            if (nameInput.value.trim() === "") {
+                nameInput.classList.add("required");
+                nameError.textContent = "This field is required";
+                valid = false;
+            } else {
+                nameInput.classList.remove("required");
+                nameError.textContent = "";
+            }
+
+            if (emailInput.value.trim() === "") {
+                emailInput.classList.add("required");
+                emailError.textContent = "This field is required";
+                valid = false;
+            } else {
+                emailInput.classList.remove("required");
+                emailError.textContent = "";
+            }
+
+            if (websiteInput.value.trim() === "") {
+                websiteInput.classList.add("required");
+                websiteError.textContent = "This field is required";
+                valid = false;
+            } else {
+                websiteInput.classList.remove("required");
+                websiteError.textContent = "";
+            }
+
+            if (messageInput.value.trim() === "") {
+                messageInput.classList.add("required");
+                messageError.textContent = "This field is required";
+                valid = false;
+            } else {
+                messageInput.classList.remove("required");
+                messageError.textContent = "";
+            }
+
+            return valid;
+        }
+    </script>
+</body>
+</html>
